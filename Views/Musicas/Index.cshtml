@@ -1,0 +1,117 @@
+@model IEnumerable<SistemaMusicas.Models.Musica>
+
+@{
+    ViewData["Title"] = "Pão & Música";
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1>🍞 Pão & Música 🎵</h1>
+
+        <p class="lead">
+            Sugira suas músicas favoritas enquanto o pão assa!
+        </p>
+
+        <a asp-action="Create" class="btn btn-primary btn-lg">
+            🥖 Sugerir uma Música
+        </a>
+
+        <a asp-action="Hoje" class="btn btn-success btn-lg">
+            🎵 Músicas de Hoje
+        </a>
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+
+            <h4>🍞 Ainda não temos músicas!</h4>
+
+            <p>
+                Seja o primeiro a sugerir uma música.
+            </p>
+
+        </div>
+    }
+    else
+    {
+        <div class="card p-3">
+
+            <h3 class="mb-3">
+                🎵 Músicas cadastradas
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Música</th>
+                            <th>Autor</th>
+                            <th>Cadastro</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var musica in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    👨‍🎓 @musica.NomeAluno
+                                </td>
+
+                                <td>
+                                    🎵 <strong>@musica.NomeMusica</strong>
+                                </td>
+
+                                <td>
+                                    ✍️ @musica.Autor
+                                </td>
+
+                                <td>
+                                    @musica.DataCadastro.ToString("dd/MM/yyyy HH:mm")
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@musica.Id"
+                                       class="btn btn-info btn-sm">
+                                        🔎
+                                    </a>
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@musica.Id"
+                                       class="btn btn-warning btn-sm">
+                                        ✏️
+                                    </a>
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@musica.Id"
+                                       class="btn btn-danger btn-sm">
+                                        🗑️
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    }
+
+</div>

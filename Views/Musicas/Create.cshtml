@@ -1,0 +1,102 @@
+@model SistemaMusicas.Models.Musica
+
+@{
+    ViewData["Title"] = "Sugerir Música";
+}
+
+<div class="container mt-5">
+
+    <div class="card p-4">
+
+        <div class="text-center mb-4">
+
+            <h1>🍞 Sugerir uma Música</h1>
+
+            <p>
+                Escolha uma música para tocar enquanto o pão assa! 🥖🎵
+            </p>
+
+        </div>
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="NomeAluno" class="form-label">
+                    👨‍🎓 Nome do aluno
+                </label>
+
+                <input asp-for="NomeAluno"
+                       class="form-control"
+                       placeholder="Digite seu nome" />
+
+                <span asp-validation-for="NomeAluno"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NomeMusica" class="form-label">
+                    🎵 Nome da música
+                </label>
+
+                <input asp-for="NomeMusica"
+                       class="form-control"
+                       placeholder="Digite o nome da música" />
+
+                <span asp-validation-for="NomeMusica"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Autor" class="form-label">
+                    ✍️ Autor / Artista
+                </label>
+
+                <input asp-for="Autor"
+                       class="form-control"
+                       placeholder="Digite o autor ou artista" />
+
+                <span asp-validation-for="Autor"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="LinkYoutube" class="form-label">
+                    ▶️ Link do YouTube
+                </label>
+
+                <input asp-for="LinkYoutube"
+                       class="form-control"
+                       placeholder="https://youtube.com/..." />
+
+                <span asp-validation-for="LinkYoutube"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="text-center">
+
+                <button type="submit"
+                        class="btn btn-success btn-lg">
+                    🍞 Cadastrar Música
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary btn-lg">
+                    Voltar
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

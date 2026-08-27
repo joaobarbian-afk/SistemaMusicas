@@ -1,0 +1,49 @@
+@model SistemaMusicas.Models.Musica
+
+@{
+    ViewData["Title"] = "Detalhes da Música";
+}
+
+<div class="container mt-4">
+
+    <h1>🎵 Detalhes da Música</h1>
+
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-3">Aluno</dt>
+        <dd class="col-sm-9">@Model.NomeAluno</dd>
+
+        <dt class="col-sm-3">Música</dt>
+        <dd class="col-sm-9">@Model.NomeMusica</dd>
+
+        <dt class="col-sm-3">Autor</dt>
+        <dd class="col-sm-9">@Model.Autor</dd>
+
+        <dt class="col-sm-3">YouTube</dt>
+        <dd class="col-sm-9">
+            <a href="@Model.LinkYoutube" target="_blank">
+                Assistir no YouTube
+            </a>
+        </dd>
+
+        <dt class="col-sm-3">Data do cadastro</dt>
+        <dd class="col-sm-9">
+            @Model.DataCadastro.ToString("dd/MM/yyyy HH:mm")
+        </dd>
+
+    </dl>
+
+    <a asp-action="Edit"
+       asp-route-id="@Model.Id"
+       class="btn btn-warning">
+        Editar
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Voltar
+    </a>
+
+</div>

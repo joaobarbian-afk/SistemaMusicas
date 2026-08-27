@@ -1,0 +1,58 @@
+@model SistemaMusicas.Models.Musica
+
+@{
+    ViewData["Title"] = "Editar Música";
+}
+
+<div class="container mt-4">
+
+    <h1>✏️ Editar Música</h1>
+
+    <hr />
+
+    <form asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="NomeAluno" class="form-label"></label>
+            <input asp-for="NomeAluno" class="form-control" />
+            <span asp-validation-for="NomeAluno" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="NomeMusica" class="form-label"></label>
+            <input asp-for="NomeMusica" class="form-control" />
+            <span asp-validation-for="NomeMusica" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Autor" class="form-label"></label>
+            <input asp-for="Autor" class="form-control" />
+            <span asp-validation-for="Autor" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LinkYoutube" class="form-label"></label>
+            <input asp-for="LinkYoutube" class="form-control" />
+            <span asp-validation-for="LinkYoutube" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            💾 Salvar alterações
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Voltar
+        </a>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

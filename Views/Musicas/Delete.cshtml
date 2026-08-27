@@ -1,0 +1,42 @@
+@model SistemaMusicas.Models.Musica
+
+@{
+    ViewData["Title"] = "Excluir Música";
+}
+
+<div class="container mt-4">
+
+    <h1>🗑️ Excluir Música</h1>
+
+    <div class="alert alert-danger">
+        Tem certeza que deseja excluir esta música?
+    </div>
+
+    <dl class="row">
+
+        <dt class="col-sm-3">Aluno</dt>
+        <dd class="col-sm-9">@Model.NomeAluno</dd>
+
+        <dt class="col-sm-3">Música</dt>
+        <dd class="col-sm-9">@Model.NomeMusica</dd>
+
+        <dt class="col-sm-3">Autor</dt>
+        <dd class="col-sm-9">@Model.Autor</dd>
+
+    </dl>
+
+    <form asp-action="Delete" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">
+            🗑️ Confirmar exclusão
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+    </form>
+
+</div>

@@ -1,0 +1,293 @@
+/* =========================================================
+   TEMA PÃO & MÚSICA
+   ========================================================= */
+
+:root {
+    --bege-pao: #F3D2A2;
+    --caramelo: #D9A066;
+    --marrom-cobre: #B87333;
+    --marrom-escuro: #8B4513;
+    --marrom-suave: #6B3E26;
+    --bege-claro: #E6C9A8;
+    --branco-creme: #FFF8ED;
+}
+
+/* ---------- GERAL ---------- */
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--bege-pao);
+    color: var(--marrom-suave);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- LINKS ---------- */
+
+a {
+    color: var(--marrom-escuro);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--marrom-cobre);
+    text-decoration: underline;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    background: linear-gradient(
+        90deg,
+        var(--marrom-escuro),
+        var(--marrom-cobre),
+        var(--caramelo)
+    ) !important;
+
+    border-bottom: 4px solid var(--bege-claro);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-brand::before {
+    content: "🍞 ";
+}
+
+.navbar .nav-link {
+    color: white !important;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.navbar .nav-link:hover {
+    color: var(--bege-pao) !important;
+}
+
+/* ---------- CONTAINERS ---------- */
+
+.container {
+    max-width: 1200px;
+}
+
+/* ---------- TÍTULOS ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: var(--marrom-escuro);
+    font-weight: bold;
+}
+
+h1::first-letter {
+    color: var(--marrom-cobre);
+}
+
+/* ---------- CARDS ---------- */
+
+.card {
+    background-color: var(--branco-creme);
+    border: 2px solid var(--bege-claro);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(107, 62, 38, 0.18);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    transition: 0.2s;
+    box-shadow: 0 8px 20px rgba(107, 62, 38, 0.25);
+}
+
+.card-title {
+    color: var(--marrom-escuro);
+    font-weight: bold;
+}
+
+/* ---------- BOTÕES ---------- */
+
+.btn-primary {
+    background-color: var(--caramelo);
+    border-color: var(--marrom-cobre);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--marrom-cobre);
+    border-color: var(--marrom-escuro);
+    color: white;
+}
+
+.btn-success {
+    background-color: var(--marrom-cobre);
+    border-color: var(--marrom-escuro);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: var(--marrom-escuro);
+    border-color: var(--marrom-escuro);
+    color: white;
+}
+
+.btn-warning {
+    background-color: var(--caramelo);
+    border-color: var(--marrom-cobre);
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: var(--marrom-cobre);
+    color: white;
+}
+
+.btn-info {
+    background-color: var(--bege-claro);
+    border-color: var(--marrom-cobre);
+    color: var(--marrom-escuro);
+}
+
+.btn-info:hover {
+    background-color: var(--caramelo);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--marrom-escuro);
+    border-color: var(--marrom-escuro);
+}
+
+.btn-danger:hover {
+    background-color: var(--marrom-suave);
+    border-color: var(--marrom-suave);
+}
+
+/* ---------- FORMULÁRIOS ---------- */
+
+.form-control,
+.form-select {
+    background-color: var(--branco-creme);
+    border: 2px solid var(--bege-claro);
+    color: var(--marrom-suave);
+    border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--marrom-cobre);
+    box-shadow: 0 0 0 0.2rem rgba(184, 115, 51, 0.25);
+}
+
+/* ---------- LABELS ---------- */
+
+.form-label {
+    color: var(--marrom-escuro);
+    font-weight: bold;
+}
+
+/* ---------- TABELA ---------- */
+
+.table {
+    background-color: var(--branco-creme);
+    border: 2px solid var(--bege-claro);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: var(--marrom-escuro);
+    color: white;
+}
+
+.table thead th {
+    color: white;
+    border-color: var(--marrom-cobre);
+}
+
+.table tbody tr {
+    border-color: var(--bege-claro);
+}
+
+.table tbody tr:hover {
+    background-color: var(--bege-pao);
+}
+
+/* ---------- ALERTAS ---------- */
+
+.alert-info {
+    background-color: var(--bege-claro);
+    border-color: var(--marrom-cobre);
+    color: var(--marrom-escuro);
+}
+
+.alert-danger {
+    background-color: #ead0c0;
+    border-color: var(--marrom-escuro);
+    color: var(--marrom-escuro);
+}
+
+/* ---------- RODAPÉ ---------- */
+
+.footer {
+    background-color: var(--bege-pao);
+    border-top: 3px solid var(--bege-claro);
+    color: var(--marrom-suave);
+}
+
+.footer a {
+    color: var(--marrom-escuro);
+}
+
+/* ---------- ÁREA PRINCIPAL ---------- */
+
+main {
+    min-height: 75vh;
+}
+
+/* ---------- BOTÃO DE YOUTUBE ---------- */
+
+.youtube-btn {
+    background-color: var(--marrom-escuro);
+    color: white;
+    border-radius: 10px;
+    padding: 8px 15px;
+    display: inline-block;
+}
+
+.youtube-btn:hover {
+    background-color: var(--marrom-suave);
+    color: white;
+    text-decoration: none;
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        margin-bottom: 5px;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}

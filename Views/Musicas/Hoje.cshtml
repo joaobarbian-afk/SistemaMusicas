@@ -1,0 +1,74 @@
+@model IEnumerable<SistemaMusicas.Models.Musica>
+
+@{
+    ViewData["Title"] = "Músicas de Hoje";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h1>🎶 Músicas de Hoje</h1>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Voltar
+        </a>
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Nenhuma música foi cadastrada hoje.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+            @foreach (var musica in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                🎵 @musica.NomeMusica
+                            </h5>
+
+                            <p class="card-text">
+                                <strong>Aluno:</strong>
+                                @musica.NomeAluno
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Autor:</strong>
+                                @musica.Autor
+                            </p>
+
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Cadastrada às
+                                    @musica.DataCadastro.ToString("HH:mm")
+                                </small>
+                            </p>
+
+                            <a href="@musica.LinkYoutube"
+                               target="_blank"
+                               class="btn btn-danger">
+                                ▶ YouTube
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
