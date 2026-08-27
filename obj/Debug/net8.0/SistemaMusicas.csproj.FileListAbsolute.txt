@@ -135,3 +135,4 @@ C:\Users\436479624.IST\Documents\Site musicas\SistemaMusicas\bin\Debug\net8.0\ru
 C:\Users\436479624.IST\Documents\Site musicas\SistemaMusicas\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\436479624.IST\Documents\Site musicas\SistemaMusicas\obj\Debug\net8.0\SistemaMusicas.csproj.AssemblyReference.cache
 C:\Users\436479624.IST\Documents\Site musicas\SistemaMusicas\obj\Debug\net8.0\SistemaM.3E1FE56D.Up2Date
+C:\Users\436479624.IST\Documents\Site musicas\SistemaMusicas\obj\Debug\net8.0\SistemaMusicas.sourcelink.json

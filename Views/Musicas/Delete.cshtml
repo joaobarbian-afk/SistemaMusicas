@@ -4,17 +4,13 @@
     ViewData["Title"] = "Excluir Música";
 }
 
-<div class="container mt-4">
+<h1>Excluir Música</h1>
 
-    <h1>🗑️ Excluir Música</h1>
-
-    <div class="alert alert-danger">
-        Tem certeza que deseja excluir esta música?
-    </div>
-
+<h3>Tem certeza de que deseja excluir esta música?</h3>
+<div>
+    <hr />
     <dl class="row">
-
-        <dt class="col-sm-3">Aluno</dt>
+        <dt class="col-sm-3">Nome do Aluno</dt>
         <dd class="col-sm-9">@Model.NomeAluno</dd>
 
         <dt class="col-sm-3">Música</dt>
@@ -22,21 +18,24 @@
 
         <dt class="col-sm-3">Autor</dt>
         <dd class="col-sm-9">@Model.Autor</dd>
-
     </dl>
-
+    
     <form asp-action="Delete" method="post">
-
         <input type="hidden" asp-for="Id" />
 
-        <button type="submit" class="btn btn-danger">
-            🗑️ Confirmar exclusão
-        </button>
+        <div class="form-group mb-3 col-md-6">
+            <label for="senhaAdmin" class="form-label"><strong>Digite a senha de administrador para confirmar:</strong></label>
+            <input type="password" name="senhaAdmin" id="senhaAdmin" class="form-control" required placeholder="Digite a senha" />
+        </div>
 
-        <a asp-action="Index" class="btn btn-secondary">
-            Cancelar
-        </a>
+        @if (TempData["ErroSenha"] != null)
+        {
+            <div class="alert alert-danger col-md-6 mb-3">
+                @TempData["ErroSenha"]
+            </div>
+        }
 
+        <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
     </form>
-
 </div>
