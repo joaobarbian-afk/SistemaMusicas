@@ -4,38 +4,49 @@
     ViewData["Title"] = "Excluir Música";
 }
 
-<h1>Excluir Música</h1>
-
-<h3>Tem certeza de que deseja excluir esta música?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-3">Nome do Aluno</dt>
-        <dd class="col-sm-9">@Model.NomeAluno</dd>
-
-        <dt class="col-sm-3">Música</dt>
-        <dd class="col-sm-9">@Model.NomeMusica</dd>
-
-        <dt class="col-sm-3">Autor</dt>
-        <dd class="col-sm-9">@Model.Autor</dd>
-    </dl>
-    
-    <form asp-action="Delete" method="post">
-        <input type="hidden" asp-for="Id" />
-
-        <div class="form-group mb-3 col-md-6">
-            <label for="senhaAdmin" class="form-label"><strong>Digite a senha do administrador para confirmar:</strong></label>
-            <input type="password" name="senhaAdmin" id="senhaAdmin" class="form-control" required placeholder="Digite a senha" />
-        </div>
-
-        @if (TempData["ErroSenha"] != null)
-        {
-            <div class="alert alert-danger col-md-6 mb-3">
-                @TempData["ErroSenha"]
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 rounded-4 p-4" style="background-color: #fff8f0;">
+            <div class="text-center mb-4">
+                <h1 class="display-6 fw-bold text-danger">⚠️ Excluir Música</h1>
+                <p class="text-muted">Tem certeza de que deseja remover este pedido?</p>
             </div>
-        }
 
-        <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-    </form>
+            <div class="bg-white p-3 rounded-3 mb-4 border">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted">Nome do Aluno:</dt>
+                    <dd class="col-sm-8 fw-bold">@Model.NomeAluno</dd>
+
+                    <dt class="col-sm-4 text-muted">Música:</dt>
+                    <dd class="col-sm-8 fw-bold">@Model.NomeMusica</dd>
+
+                    <dt class="col-sm-4 text-muted">Autor / Artista:</dt>
+                    <dd class="col-sm-8">@Model.Autor</dd>
+                </dl>
+            </div>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label for="senhaAdmin" class="form-label fw-bold text-dark">
+                        Digite a senha do administrador para confirmar:
+                    </label>
+                    <input type="password" name="senhaAdmin" id="senhaAdmin" class="form-control rounded-3" required placeholder="Digite a senha" />
+                </div>
+
+                @if (TempData["ErroSenha"] != null)
+                {
+                    <div class="alert alert-danger rounded-3 mb-3">
+                        @TempData["ErroSenha"]
+                    </div>
+                }
+
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <a asp-action="Index" class="btn btn-secondary rounded-pill px-4">Cancelar</a>
+                    <button type="submit" class="btn btn-danger rounded-pill px-4">Confirmar Exclusão</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

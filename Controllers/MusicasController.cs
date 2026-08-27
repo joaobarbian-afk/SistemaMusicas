@@ -31,14 +31,38 @@ namespace SistemaMusicas.Controllers
             return View(musicasHoje);
         }
 
-        // GET: Musicas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Musicas/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
 
-            var musica = await _context.Musicas.FirstOrDefaultAsync(m => m.Id == id);
+            var musica = await _context.Musicas.FindAsync(id);
             if (musica == null) return NotFound();
 
+            return View(musica);
+        }
+
+        // POST: Musicas/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeAluno,NomeMusica,Autor,LinkYoutube,DataCadastro")] Musica musica)
+        {
+            if (id != musica.Id) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(musica);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Musicas.Any(e => e.Id == musica.Id)) return NotFound();
+                    else throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
             return View(musica);
         }
 
@@ -79,7 +103,6 @@ namespace SistemaMusicas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, string senhaAdmin)
         {
-            // DEFINE A SUA SENHA DE ADMINISTRADOR AQUI:
             string senhaCorreta = "123456";
 
             if (string.IsNullOrEmpty(senhaAdmin) || senhaAdmin != senhaCorreta)
@@ -98,4 +121,4 @@ namespace SistemaMusicas.Controllers
             return RedirectToAction(nameof(Index));
         }
     }
-}   
+}

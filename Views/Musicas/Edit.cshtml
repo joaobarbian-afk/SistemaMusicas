@@ -4,55 +4,43 @@
     ViewData["Title"] = "Editar Música";
 }
 
-<div class="container mt-4">
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 rounded-4 p-4" style="background-color: #fff8f0;">
+            <div class="text-center mb-4">
+                <h1 class="display-6 fw-bold text-dark">✏️ Editar Música</h1>
+                <p class="text-muted">Atualize as informações do pedido</p>
+            </div>
 
-    <h1>✏️ Editar Música</h1>
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="DataCadastro" />
 
-    <hr />
+                <div class="mb-3">
+                    <label asp-for="NomeAluno" class="form-label fw-bold">Nome do Aluno</label>
+                    <input asp-for="NomeAluno" class="form-control rounded-3" required />
+                </div>
 
-    <form asp-action="Edit" method="post">
+                <div class="mb-3">
+                    <label asp-for="NomeMusica" class="form-label fw-bold">Música</label>
+                    <input asp-for="NomeMusica" class="form-control rounded-3" required />
+                </div>
 
-        <input type="hidden" asp-for="Id" />
+                <div class="mb-3">
+                    <label asp-for="Autor" class="form-label fw-bold">Autor / Artista</label>
+                    <input asp-for="Autor" class="form-control rounded-3" />
+                </div>
 
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-4">
+                    <label asp-for="LinkYoutube" class="form-label fw-bold">Link do YouTube</label>
+                    <input asp-for="LinkYoutube" class="form-control rounded-3" />
+                </div>
 
-        <div class="mb-3">
-            <label asp-for="NomeAluno" class="form-label"></label>
-            <input asp-for="NomeAluno" class="form-control" />
-            <span asp-validation-for="NomeAluno" class="text-danger"></span>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a asp-action="Index" class="btn btn-secondary rounded-pill px-4">Cancelar</a>
+                    <button type="submit" class="btn btn-warning rounded-pill px-4 text-white">Salvar Alterações</button>
+                </div>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label asp-for="NomeMusica" class="form-label"></label>
-            <input asp-for="NomeMusica" class="form-control" />
-            <span asp-validation-for="NomeMusica" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="Autor" class="form-label"></label>
-            <input asp-for="Autor" class="form-control" />
-            <span asp-validation-for="Autor" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="LinkYoutube" class="form-label"></label>
-            <input asp-for="LinkYoutube" class="form-control" />
-            <span asp-validation-for="LinkYoutube" class="text-danger"></span>
-        </div>
-
-        <button type="submit" class="btn btn-success">
-            💾 Salvar alterações
-        </button>
-
-        <a asp-action="Index" class="btn btn-secondary">
-            Voltar
-        </a>
-
-    </form>
+    </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
