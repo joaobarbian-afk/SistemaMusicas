@@ -4,71 +4,59 @@
     ViewData["Title"] = "Músicas de Hoje";
 }
 
-<div class="container mt-4">
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card shadow-sm border-0 rounded-4 p-4" style="background-color: #fff8f0;">
+            <div class="text-center mb-4">
+                <h1 class="display-6 fw-bold text-dark">🥐 Músicas de Hoje</h1>
+                <p class="text-muted">Lista de músicas cadastradas na data de hoje!</p>
+            </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-
-        <h1>🎶 Músicas de Hoje</h1>
-
-        <a asp-action="Index" class="btn btn-secondary">
-            Voltar
-        </a>
-
-    </div>
-
-    @if (!Model.Any())
-    {
-        <div class="alert alert-info">
-            Nenhuma música foi cadastrada hoje.
-        </div>
-    }
-    else
-    {
-        <div class="row">
-
-            @foreach (var musica in Model)
+            @if (!Model.Any())
             {
-                <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100 shadow-sm">
-
-                        <div class="card-body">
-
-                            <h5 class="card-title">
-                                🎵 @musica.NomeMusica
-                            </h5>
-
-                            <p class="card-text">
-                                <strong>Aluno:</strong>
-                                @musica.NomeAluno
-                            </p>
-
-                            <p class="card-text">
-                                <strong>Autor:</strong>
-                                @musica.Autor
-                            </p>
-
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    Cadastrada às
-                                    @musica.DataCadastro.ToString("HH:mm")
-                                </small>
-                            </p>
-
-                            <a href="@musica.LinkYoutube"
-                               target="_blank"
-                               class="btn btn-danger">
-                                ▶ YouTube
-                            </a>
-
-                        </div>
-
-                    </div>
-
+                <div class="alert alert-warning text-center rounded-3">
+                    Nenhuma música foi cadastrada hoje ainda.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Aluno</th>
+                                <th>Música</th>
+                                <th>Autor / Artista</th>
+                                <th>Link YouTube</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">@item.NomeAluno</td>
+                                    <td>@item.NomeMusica</td>
+                                    <td>@item.Autor</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.LinkYoutube))
+                                        {
+                                            <a href="@item.LinkYoutube" target="_blank" class="btn btn-sm btn-outline-danger rounded-pill">▶ Assistir</a>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger rounded-pill">Excluir</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             }
 
+            <div class="mt-4 text-center">
+                <a asp-action="Index" class="btn btn-secondary rounded-pill px-4">Voltar para a Lista Completa</a>
+            </div>
         </div>
-    }
-
+    </div>
 </div>
